@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Visionary Edu - HTML & CSS Tutorial</title>
+  <meta name="description" content="Visionary: HTML эсвэл CSS хичээл сонгон суралцах.">
+  <link rel="icon" type="image/v-t" href="images/logo/v-t.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* Base styles */
+    :root {
+      --primary: #1e293b;
+      --primary-light: #334155;
+      --secondary: #475569;
+      --accent: #3b82f6;
+      --light: #f8fafc;
+      --dark: #0f172a;
+      --gray: #94a3b8;
+      --gray-light: #e2e8f0;
+      --success: #10b981;
+      --warning: #f59e0b;
+      --danger: #ef4444;
+      --text: #1e293b;
+      --text-light: #64748b;
+      --bg: #ffffff;
+      --bg-secondary: #f8fafc;
+      --shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+      --shadow-lg: 0 4px 6px rgba(0, 0, 0, 0.05);
+      --border: 1px solid #e2e8f0;
+      --radius: 8px;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    
+    /* Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    
+    ::-webkit-scrollbar-track {
+      background: var(--bg);
+    }
+    
+    ::-webkit-scrollbar-thumb {
+      background: var(--primary-light);
+      border-radius: 5px;
+    }
+    
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--primary);
+    }
+
+    /* Header */
+    .header {
+      background: var(--bg);
+      color: var(--text);
+      padding: 16px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: var(--shadow);
+      position: sticky;
+      top: 0;
+      z-index: 1001;
+      border-bottom: var(--border);
+    }
+    /* Glass эффект */
+.header.glass {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  transition: background 0.3s ease, backdrop-filter 0.3s ease;
+}
+
+    
+    .header-logo {
+      display: flex;
+      align-items: center;
+    }
+
+    .header-logo .logo-img {
+      width: 200px;
+      height: 50px;
+      object-fit: cover; 
+      border-radius: var(--radius);
+      margin-right: 12px;
+    }
+    
+    .header-social {
+      display: flex;
+      align-items: center;
+    }
+    
+    .header-social a {
+      color: var(--text-light);
+      margin-left: 16px;
+      font-size: 18px;
+      transition: all 0.2s ease;
+    }
+    
+    .header-social a:hover {
+      color: var(--text);
+    }
+
+    /* Main content area */
+    .main-container {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      max-width: 1200px;
+      margin: 0 auto;
+      width: 100%;
+      padding: 30px;
+    }
+
+    /* Hero Section */
+    .hero {
+      text-align: center;
+      padding: 60px 20px;
+      background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+      border-radius: var(--radius);
+      margin-bottom: 40px;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100" opacity="0.05"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="1" fill="%23000"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+    }
+    
+    .hero-content {
+      position: relative;
+      z-index: 1;
+    }
+    
+    .hero h1 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+      color: var(--primary);
+      font-weight: 700;
+    }
+    
+    .hero p {
+      font-size: 1.2rem;
+      color: var(--text-light);
+      max-width: 700px;
+      margin: 0 auto 30px;
+    }
+    
+    /* Course Selection */
+    .course-selection {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      margin-top: 40px;
+      flex-wrap: wrap;
+    }
+    
+    .course-card {
+      background: white;
+      border-radius: var(--radius);
+      padding: 30px;
+      width: 320px;
+      box-shadow: var(--shadow-lg);
+      transition: all 0.3s ease;
+      border: var(--border);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .course-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+    }
+    
+    .html-card::before {
+      background: #e34c26;
+    }
+    
+    .css-card::before {
+      background: #264de4;
+    }
+    
+    .course-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    }
+    
+    .course-icon {
+      font-size: 4rem;
+      margin-bottom: 20px;
+    }
+    
+    .html-card .course-icon {
+      color: #e34c26;
+    }
+    
+    .css-card .course-icon {
+      color: #264de4;
+    }
+    
+    .course-card h3 {
+      font-size: 1.8rem;
+      margin-bottom: 15px;
+      color: var(--primary);
+    }
+    
+    .course-card p {
+      color: var(--text-light);
+      margin-bottom: 25px;
+      line-height: 1.6;
+    }
+    
+    .btn {
+      display: inline-block;
+      padding: 12px 30px;
+      background: var(--accent);
+      color: white;
+      border-radius: var(--radius);
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      border: 2px solid var(--accent);
+    }
+    
+    .btn:hover {
+      background: transparent;
+      color: var(--accent);
+    }
+    
+    .html-btn {
+      background: #e34c26;
+      border-color: #e34c26;
+    }
+    
+    .html-btn:hover {
+      background: transparent;
+      color: #e34c26;
+    }
+    
+    .css-btn {
+      background: #264de4;
+      border-color: #264de4;
+    }
+    
+    .css-btn:hover {
+      background: transparent;
+      color: #264de4;
+    }
+
+    /* Features Section */
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin-top: 60px;
+    }
+    
+    .feature-card {
+      background: var(--bg);
+      border-radius: var(--radius);
+      padding: 30px;
+      box-shadow: var(--shadow);
+      transition: all 0.3s ease;
+      border: var(--border);
+      text-align: center;
+    }
+    
+    .feature-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-lg);
+    }
+    
+    .feature-icon {
+      font-size: 2.5rem;
+      color: var(--accent);
+      margin-bottom: 20px;
+    }
+    
+    .feature-card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 15px;
+      color: var(--primary);
+    }
+    
+    .feature-card p {
+      color: var(--text-light);
+      line-height: 1.6;
+    }
+
+    /* Testimonials */
+    .testimonials {
+      margin-top: 80px;
+      text-align: center;
+    }
+    
+    .testimonials h2 {
+      font-size: 2.2rem;
+      margin-bottom: 40px;
+      color: var(--primary);
+    }
+    
+    .testimonial-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+    }
+    
+    .testimonial-card {
+      background: var(--bg);
+      border-radius: var(--radius);
+      padding: 30px;
+      box-shadow: var(--shadow);
+      border: var(--border);
+      text-align: left;
+    }
+    
+    .testimonial-text {
+      font-style: italic;
+      margin-bottom: 20px;
+      color: var(--text);
+      line-height: 1.6;
+    }
+    
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+    }
+    
+    .author-avatar {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: bold;
+      margin-right: 15px;
+    }
+    
+    .author-info h4 {
+      margin-bottom: 5px;
+      color: var(--primary);
+    }
+    
+    .author-info p {
+      color: var(--text-light);
+      font-size: 0.9rem;
+    }
+
+    /* Footer */
+    .footer {
+      background: var(--primary);
+      color: #f1f5f9;
+      padding: 50px 30px;
+      text-align: center;
+      margin-top: 80px;
+    }
+    
+    .footer-logo img {
+      width: 150px;
+      height: auto;
+      display: block;
+      margin: 0 auto 20px; 
+    }
+    
+    .footer-content p {
+      line-height: 1.8;
+      margin-bottom: 15px;
+      font-size: 15px;
+      color: #cbd5e1;
+    }
+    
+    .footer-content a {
+      color: #60a5fa;
+      text-decoration: none;
+    }
+    
+    .footer-content a:hover {
+      text-decoration: underline;
+    }
+    
+    .footer .copyright-warning {
+      color: #f87171;
+      font-weight: bold;
+      animation: pulse 2s infinite;
+    }
+    
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.8; }
+    }
+    
+    .footer-bottom {
+      margin-top: 25px;
+      border-top: 1px solid rgba(255, 255, 255, 0.2);
+      padding-top: 10px;
+      font-size: 14px;
+      color: #94a3b8;
+    }
+
+    /* Responsive */
+    @media screen and (max-width: 768px) {
+      .header {
+        padding: 14px 20px;
+      }
+      
+      .header-social a {
+        margin-left: 12px;
+        font-size: 16px;
+      }
+      
+      .main-container {
+        padding: 20px;
+      }
+      
+      .hero h1 {
+        font-size: 2.2rem;
+      }
+      
+      .hero p {
+        font-size: 1rem;
+      }
+      
+      .course-selection {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .course-card {
+        width: 100%;
+        max-width: 400px;
+      }
+      
+      .features {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media screen and (max-width: 480px) {
+      .header-social a {
+        margin-left: 10px;
+        font-size: 14px;
+      }
+      
+      .hero {
+        padding: 40px 15px;
+      }
+      
+      .hero h1 {
+        font-size: 1.8rem;
+      }
+      
+      .course-card {
+        padding: 20px;
+      }
+      
+      .feature-card {
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <div class="header">
+      <a href="index.html" class="header-logo">
+        <img src="images/logo/Visionary Edu.png" alt="Visionary Edu Logo" class="logo-img">
+      </a>
+
+    <div class="header-social">
+      <a href="https://www.facebook.com/share/16zNXUQ613/" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+      <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="main-container">
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-content">
+        <h1>Вэб Хөгжүүлэлтийн Үндэс</h1>
+        <p>HTML эсвэл CSS-ийг сонгон суралцаж, вэб хөгжүүлэлтийн үндсийг эзэмш. Энгийн тайлбар, бодит жишээнүүдээр хурдан суралцах боломжтой.</p>
+        
+        <div class="course-selection">
+          <div class="course-card html-card">
+            <div class="course-icon">
+              <i class="fab fa-html5"></i>
+            </div>
+            <h3>HTML Tutorial</h3>
+            <p>Вэб хуудасны бүтцийг бүтээх үндсэн хэлийг суралцах. Элемент, атрибут, хүснэгт, форм зэрэг бүх ойлголтуудыг эхнээс нь сур.</p>
+            <a href="html-default.html" class="btn html-btn">HTML Сурч эхлэх</a>
+          </div>
+          
+          <div class="course-card css-card">
+            <div class="course-icon">
+              <i class="fab fa-css3-alt"></i>
+            </div>
+            <h3>CSS Tutorial</h3>
+            <p>Вэб хуудасны загвар, хэлбэрийг сайжруулахыг суралцах. Өнгө, фонт, байршил, responsive дизайн зэрэг CSS-ийн бүх чадваруудыг эзэмш.</p>
+            <a href="css-default.html" class="btn css-btn">CSS Сурч эхлэх</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+      <div class="feature-card">
+        <div class="feature-icon">
+          <i class="fas fa-graduation-cap"></i>
+        </div>
+        <h3>Анхлан суралцагчдад зориулав</h3>
+        <p>Тайлбар нь энгийн бөгөөд ойлгоход амар. Вэб хөгжүүлэлтийн талаар урьдчилсан мэдлэг шаардлагагүй.</p>
+      </div>
+      
+      <div class="feature-card">
+        <div class="feature-icon">
+          <i class="fas fa-laptop-code"></i>
+        </div>
+        <h3>Бодит жишээ, дадлага</h3>
+        <p>Онлайн код засварлагч ашиглан шуурхай туршиж үзэх боломжтой. Онолын мэдлэгээ дадлагаар бататга.</p>
+      </div>
+      
+      <div class="feature-card">
+        <div class="feature-icon">
+          <i class="fas fa-mobile-alt"></i>
+        </div>
+        <h3>Бүх төхөөрөмж дээр ажиллана</h3>
+        <p>Компьютер, таблет, ухаалаг гар утас гэх мэт бүх төхөөрөмж дээр сайн ажиллах интерфэйс.</p>
+      </div>
+    </section>
+
+    <!--  -->
+    <section class="testimonials">
+      <h2>Суралцагчдын сэтгэгдэл</h2>
+      <div class="testimonial-cards">
+        <div class="testimonial-card">
+          <div class="testimonial-text">
+            "Энэхүү хичээл нь HTML-ийг эхнээс нь сурахад маш сайн туслав. Жишээнүүд нь ойлгомжтой, дадлагууд нь бодит амьдралд хэрэгтэй байсан."
+          </div>
+          <div class="testimonial-author">
+            <div class="author-avatar">БО</div>
+            <div class="author-info">
+              <h4>Бат-Очир</h4>
+              <p>Суралцагч</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="testimonial-card">
+          <div class="testimonial-text">
+            "CSS хичээл нь загвар өөрчлөх, responsive дизайн хийх зэрэг чухал ойлголтуудыг маш сайн тайлбарласан. Одоо би өөрийн вэбсайтаа хийж чадах боллоо."
+          </div>
+          <div class="testimonial-author">
+            <div class="author-avatar">ЦЭ</div>
+            <div class="author-info">
+              <h4>Цэнд-Аюуш</h4>
+              <p>Вэб дизайнер</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="testimonial-card">
+          <div class="testimonial-text">
+            "Хичээлийн бүтэц нь маш сайн зохион байгуулагдсан. Алхам алхмаар суралцах боломж олгож, хэцүү ойлголтуудыг энгийнээр тайлбарласан."
+          </div>
+          <div class="testimonial-author">
+            <div class="author-avatar">СА</div>
+            <div class="author-info">
+              <h4>Сараа</h4>
+              <p>Суралцагч</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-logo">
+        <a href="#">
+          <img src="images/logo/Visionary Edu.png" alt="Visionary Edu Logo">
+        </a>
+      </div>
+      <p>Visionary Edu нь суралцах, дадлага хийхэд зориулагдсан. Жишээнүүд энгийн бөгөөд ойлгоход амар.</p>
+      <p class="copyright-warning">
+        Энэхүү вэбсайт болон агуулгыг зөвшөөрөлгүй хуулбарлах, тараахыг хориглоно.
+      </p>
+      <p>Сайтыг ашиглахдаа та <a href="#">Үйлчилгээний нөхцөл</a>, болон <a href="#">Нууцлалын бодлого</a>-ыг уншиж, зөвшөөрсөн гэж үзнэ.</p>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 Visionary Edu. Бүх эрх хуулиар хамгаалагдсан.</p>
+    </div>
+  </footer>
+
+  <script>
+  window.addEventListener("scroll", () => {
+    const header = document.querySelector(".header");
+    if (window.scrollY > 50) {
+      header.classList.add("glass");
+    } else {
+      header.classList.remove("glass");
+    }
+  });
+
+    // Simple animation on scroll
+    document.addEventListener('DOMContentLoaded', function() {
+      const featureCards = document.querySelectorAll('.feature-card');
+      const testimonialCards = document.querySelectorAll('.testimonial-card');
+      
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = 1;
+            entry.target.style.transform = 'translateY(0)';
+          }
+        });
+      }, { threshold: 0.1 });
+      
+      // Set initial state for animation
+      featureCards.forEach(card => {
+        card.style.opacity = 0;
+        card.style.transform = 'translateY(20px)';
+        card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+        observer.observe(card);
+      });
+      
+      testimonialCards.forEach(card => {
+        card.style.opacity = 0;
+        card.style.transform = 'translateY(20px)';
+        card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+        observer.observe(card);
+      });
+    });
+  </script>
+</body>
+</html>
