@@ -1,2 +1,2 @@
-# Visionary-Edu
+# Cubiq-Edu
 Frontend Learning
